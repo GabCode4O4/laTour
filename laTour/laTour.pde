@@ -15,6 +15,5 @@ void setup() {
 void draw() { 
   background(99, 188, 227);
   lights();
-
-
+  drawWall(12,14);
 }
