@@ -2,10 +2,12 @@
 
 void drawCrenaux(float p_x, float p_y, int w)
 {
-    
-    for (int x = 0; x < w; x+=2)
-    {
-        //drawCube(p_x + x * cube_width, p_y, 1, 2);
+  int nb_crenaux = int(w * 0.7); 
+  float shift = float(w) / float(nb_crenaux);
 
-    }
+  for (int i = 0; i < nb_crenaux; i++) {
+    float x = p_x + i * shift * cube_width;
+    drawCube(x, p_y, 0, cube_width, cube_height, cube_width);
+    drawCube(x, p_y + cube_height, 0, cube_width, cube_height, cube_width);
+  }
 }
