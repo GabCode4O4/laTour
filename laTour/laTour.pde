@@ -20,15 +20,22 @@ void draw() {
 }
 
 void tour(float x, float y) {
-  float len_mur = nb_cube_width * cube_width;
+  float wall_width = nb_cube_width * cube_width;
+  float wall_height = nb_cube_height * cube_height;  
 
   for (int i = 0; i < 4; i++) {
     pushMatrix();
     rotateY(radians(i * theta));
-    translate(len_mur/2, 0, 0); //on divise len_mur par 2 sinon y'a un décalage d'un mur entre chaque mur :))
+    translate(wall_width/2, 0, 0); //on divise wall_width par 2 sinon y'a un décalage d'un mur entre chaque mur :))
     rotateY(radians(90));
-    drawWall(x - len_mur/2, y, nb_cube_width, nb_cube_height);
+    drawPorte(x - wall_width/2, y , nb_cube_width, nb_cube_height); // porte 
+    drawWall(x - wall_width/2, y - 1 * wall_height, nb_cube_width, nb_cube_height); // mur 
+    drawMeurtriere(x - wall_width/2, y - 2 *wall_height, nb_cube_width,nb_cube_height); // meurtrière
+    drawWall(x - wall_width/2, y - 3* wall_height, nb_cube_width, nb_cube_height); // mur 
+    //drawCrenaux(x - wall_width/2, y - 4* wall_height, nb_cube_width); // crenaux
     popMatrix();
   }
+
+  
 }
   

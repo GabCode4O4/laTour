@@ -5,7 +5,7 @@ int nb_cube_height = 6;
 
 
 
-void drawCube(float x, float y, float z, float w, float h, float l, float theta)
+void drawCube(float x, float y, float z, float w, float h, float l)
 {
   pushMatrix();
   fill(200);
@@ -16,3 +16,4 @@ void drawCube(float x, float y, float z, float w, float h, float l, float theta)
   box(w, h, l);
   popMatrix();
 }
+
