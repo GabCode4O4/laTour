@@ -18,3 +18,7 @@ void draw() {
   lights();
   drawWall(0.0, 0.0, 12, 14, theta);
 }
+
+void tour(int x, int y){
+  drawWall(x,y, )
+}

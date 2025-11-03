@@ -1,5 +1,8 @@
 
-
+/*w = largeur en cube
+h = hauteur en cube
+theta = angle degrés
+*/
 
 void drawWall(float p_x, float p_y, int w, int h, float theta)
 {
