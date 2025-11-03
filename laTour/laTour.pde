@@ -13,7 +13,8 @@ void setup() {
 }
 
 void draw() { 
+  theta = 90.0f;
   background(99, 188, 227);
   lights();
-  drawWall(12,14);
+  drawWall(0.0, 0.0, 12, 14, theta);
 }

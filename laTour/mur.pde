@@ -1,7 +1,7 @@
 
 
 
-void drawWall(int w, int h)
+void drawWall(float p_x, float p_y, int w, int h, float theta)
 {
     float shift = 0.f;
     for (int y = 0; y < h; y++)
@@ -12,11 +12,11 @@ void drawWall(int w, int h)
 
             if ((y%2 == 1) && (x == 0 || x == w) )
             {
-                drawCube((shift) * cube_width - cube_width/4, y*cube_height, 0.f, cube_width/2, cube_height, cube_width);
+                drawCube(p_x + (shift) * cube_width - cube_width/4, p_y + y*cube_height, 0.f, cube_width/2, cube_height, cube_width, theta);
                 shift+=0.5f;
             }
             else {
-                drawCube((shift) * cube_width, y*cube_height, 0.f, cube_width, cube_height, cube_width);
+                drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, cube_width, cube_height, cube_width, theta);
                 shift+=1f;
             }
                 
