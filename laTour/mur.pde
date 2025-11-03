@@ -4,7 +4,7 @@ h = hauteur en cube
 theta = angle degrés
 */
 
-void drawWall(float p_x, float p_y, int w, int h, float theta)
+void drawWall(float p_x, float p_y, int w, int h)
 {
     float shift = 0.f;
     for (int y = 0; y < h; y++)
