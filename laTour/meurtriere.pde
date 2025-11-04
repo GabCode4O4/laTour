@@ -11,5 +11,5 @@ void drawMeurtriere(float p_x, float p_y, int w, int h)
 {
     float shift = (w/2+0.5f) * cube_width;
     drawWall(p_x,p_y,w/2,h);
-    drawWall(p_x+shift,p_y,w/2,h);
+    drawWall(p_x+shift,p_y, w/2 ,h, true);
 }
