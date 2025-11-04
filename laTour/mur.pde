@@ -1,7 +1,8 @@
-
 /*w = largeur en cube
 h = hauteur en cube
 */
+
+// c'est trop moche je l'ai fait n'import comment, je vais factoriser tout ça quand meme ( et le rendre plus beau)
 
 void drawWall(float p_x, float p_y, float p_w, int h)
 {
@@ -25,10 +26,14 @@ void drawWall(float p_x, float p_y, float p_w, int h)
                 
         }
         
-        float last_cube_width = p_w - w;
-        if (last_cube_width > 0.f)
+        float last_cube_width = (p_w - w) * cube_width;
+        if (last_cube_width > 0.f) {
+            pushMatrix();
+            float translation = (cube_width-last_cube_width)/2.f;
+            translate(-translation,0,0);
             drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, last_cube_width, cube_height, cube_width);
-
+            popMatrix();
+        }
     }
 }
 
@@ -52,10 +57,14 @@ void drawWall_inverse(float p_x, float p_y, float p_w, int h)
             }
             
         }
-        float last_cube_width = p_w - w;
-        if (last_cube_width > 0.f)
+        float last_cube_width = (p_w - w) * cube_width;
+        if (last_cube_width > 0.f) {
+            pushMatrix();
+            float translation = (cube_width-last_cube_width)/2.f;
+            translate(-translation,0,0);
             drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, last_cube_width, cube_height, cube_width);
-
+            popMatrix();
+        }
     }
 }
 
