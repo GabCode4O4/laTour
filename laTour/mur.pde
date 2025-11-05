@@ -2,73 +2,55 @@
 h = hauteur en cube
 */
 
-// c'est trop moche je l'ai fait n'import comment, je vais factoriser tout ça quand meme ( et le rendre plus beau)
-
-void drawWall(float p_x, float p_y, float p_w, int h)
+void drawWall(float p_x, float p_y, float p_w, float p_h)
 {
-    float shift = 0.f;
-    int w = (int)p_w;
+    int h = floor(p_h);
+    float dy = p_y;
     for (int y = 0; y < h; y++)
     {        
-        shift = 0.f;
-        for (int x = 0; x < w+ y%2; x++)
-        {
-
-            if ((y%2 == 1) && (x == 0 || x == w) )
-            {
-                drawCube(p_x + (shift) * cube_width - cube_width/4, p_y + y*cube_height, 0.f, cube_width/2, cube_height, cube_width);
-                shift+=0.5f;
-            }
-            else {
-                drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, cube_width, cube_height, cube_width);
-                shift+=1f;
-            }
-                
-        }
-        
-        float last_cube_width = (p_w - w) * cube_width;
-        if (last_cube_width > 0.f) {
-            pushMatrix();
-            float translation = (cube_width-last_cube_width)/2.f;
-            translate(-translation,0,0);
-            drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, last_cube_width, cube_height, cube_width);
-            popMatrix();
-        }
+        boolean odd = (y%2) == 1;
+        drawWallRaw(p_x,dy,p_w,odd);
+        dy+= cube_height;
     }
 }
 
-void drawWall_inverse(float p_x, float p_y, float p_w, int h)
+void drawWallRaw(float p_x, float p_y, float p_w, boolean half)
 {
-    float shift = 0.f;
-    int w = (int)p_w;
+    int w = floor(p_w);
+    float additional_width = (p_w-w)*cube_width/2;
+    int nbCubes = half? w+1 : w;
+    float dx = p_x;
+    float dy = p_y;
+    float brick_width = 0.f;
+    for (int x = 0; x < nbCubes; x++)
+    {
+        if(x == 0 || x == nbCubes-1){
+            brick_width = cube_width + additional_width;
+            if (half) {
+                brick_width= cube_width/2 + additional_width;
+            }
+        } else {
+            brick_width = cube_width;
+        }
+        drawCube(dx, dy,0.f, brick_width, cube_height, cube_length);
+        dx+=brick_width;
+    }
+
+}
+
+void drawWall_inverse(float p_x, float p_y, float p_w, float p_h) {
+    float dy = p_y;
+    int h = floor(p_h);
+
     for (int y = 0; y < h; y++)
     {        
-        shift = 0.f;
-        for (int x = 0; x < w + (y+1)%2; x++)
-        {
-            if ((y%2 == 0) && (x == 0 || x == w) )
-            {
-                drawCube(p_x + (shift) * cube_width - cube_width/4, p_y + y*cube_height, 0.f, cube_width/2, cube_height, cube_width);
-                shift+=0.5f;
-            }
-            else {
-                drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, cube_width, cube_height, cube_width);
-                shift+=1f;
-            }
-            
-        }
-        float last_cube_width = (p_w - w) * cube_width;
-        if (last_cube_width > 0.f) {
-            pushMatrix();
-            float translation = (cube_width-last_cube_width)/2.f;
-            translate(-translation,0,0);
-            drawCube(p_x + (shift) * cube_width, p_y + y*cube_height, 0.f, last_cube_width, cube_height, cube_width);
-            popMatrix();
-        }
+        boolean odd = (y%2) == 1;
+        drawWallRaw(p_x,dy,p_w,!odd);
+        dy+= cube_height;
     }
 }
 
-void drawWall(float p_x, float p_y, float w, int h, boolean inverse_order)
+void drawWall(float p_x, float p_y, float w, float h, boolean inverse_order)
 {
     if (inverse_order)
         drawWall_inverse(p_x,p_y,w,h);
