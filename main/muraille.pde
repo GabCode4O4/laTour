@@ -2,24 +2,42 @@ void muraille() {
 
   pushMatrix();
   translate(-dist + tour_width/2, 0, -dist);
-  drawWall(0, 0, largeur_muraille/cube_width, hauteur_muraille);
+  for (int i = 0; i < 6; i++) {
+
+    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
+ 
+  }
   popMatrix();
   
   pushMatrix();
   translate(-dist + tour_width/2, 0, dist);
-  drawWall(0, 0, largeur_muraille/cube_width, hauteur_muraille);
+   drawPorte(0, 0,largeur_muraille, nb_cube_height);
+   for (int i = 1; i < 6; i++) {
+
+    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
+ 
+  }
   popMatrix();
   
   pushMatrix();
   translate(-dist, 0, dist - tour_width/2);
   rotateY(HALF_PI);
-  drawWall(0, 0, largeur_muraille/cube_width, hauteur_muraille);
+    for (int i = 0; i < 6; i++) {
+
+    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
+ 
+  }
   popMatrix();
 
   pushMatrix();
   translate(dist, 0, dist - tour_width/2);
   rotateY(HALF_PI);
-  drawWall(0, 0, largeur_muraille/cube_width, hauteur_muraille);
+ 
+    for (int i =0; i < 6; i++) {
+
+    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
+ 
+  }
   popMatrix();
   
 
