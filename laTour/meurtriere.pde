@@ -10,7 +10,8 @@ h = hauteur en cube
 void drawMeurtriere(float p_x, float p_y, float w, int h)
 {
     float hole_size = 0.5f;
-    float shift = (w/2+hole_size)* cube_width;
-    drawWall(p_x,p_y, w/2 ,h);
-    drawWall(p_x+shift, p_y, w/2 - hole_size,h, false);
+    float shift = (w+hole_size)/2 * cube_width;
+    float wall_width = (w-hole_size)/2;
+    drawWall(p_x,p_y, wall_width ,h);
+    drawWall(p_x+shift, p_y, wall_width, h, false);
 }
