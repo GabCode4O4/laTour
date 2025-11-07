@@ -7,6 +7,7 @@ void muraille() {
     drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
  
   }
+  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
   popMatrix();
   
   pushMatrix();
@@ -15,8 +16,10 @@ void muraille() {
    for (int i = 1; i < 6; i++) {
 
     drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
+    
  
   }
+  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
   popMatrix();
   
   pushMatrix();
@@ -27,6 +30,7 @@ void muraille() {
     drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
  
   }
+  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
   popMatrix();
 
   pushMatrix();
@@ -38,6 +42,7 @@ void muraille() {
     drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
  
   }
+  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
   popMatrix();
   
 

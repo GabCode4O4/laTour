@@ -3,7 +3,7 @@ float cube_height = 2.f;
 float cube_length = cube_width;
 int nb_cube_width = 10;
 int nb_cube_height = 6;
-float theta = radians(90.0f);
+float theta1 = radians(90.0f);
 float dist = 50 * cube_width;
 float tour_width = cube_width * (1+nb_cube_width);
 
