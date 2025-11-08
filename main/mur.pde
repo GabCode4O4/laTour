@@ -10,7 +10,7 @@ void drawWall(float p_x, float p_y, float p_w, float p_h)
     {        
         boolean odd = (y%2) == 1;
         drawWallRaw(p_x,dy,p_w,odd);
-        dy+= cube_height;
+        dy-= cube_height;
     }
 }
 
@@ -46,7 +46,7 @@ void drawWall_inverse(float p_x, float p_y, float p_w, float p_h) {
     {        
         boolean odd = (y%2) == 1;
         drawWallRaw(p_x,dy,p_w,!odd);
-        dy+= cube_height;
+        dy-= cube_height;
     }
 }
 
@@ -56,4 +56,7 @@ void drawWall(float p_x, float p_y, float w, float h, boolean inverse_order)
         drawWall_inverse(p_x,p_y,w,h);
     else
         drawWall(p_x,p_y,w,h);
+
+    
+
 }

@@ -19,8 +19,6 @@ void draw() {
   background(99, 188, 227);
   lights();
   chateau.afficher();
-  
-
 
 
 }

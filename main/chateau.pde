@@ -31,8 +31,10 @@ class Chateau {
     t4.draw();
     t5.draw();
     
-    muraille();
-    
+    muraille(t3, t2, 10);
+    muraille(t3, t4, 10, true);
+    muraille(t4, t5, 10);
+    muraille(t5, t2, 10);
     popMatrix();
   }
   

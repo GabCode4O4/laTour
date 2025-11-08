@@ -1,49 +1,33 @@
-void muraille() {
+
+
+
+void muraille(Tour t1, Tour t2, float p_h, boolean door)
+{
+  PVector u = new PVector(1.f, 0.f, 0.f); // vecteur orientation mur de base
+  PVector v = t2.getPosition().sub( t1.getPosition());  // vecteur entre les deux tours
+  
+  float angle = PVector.angleBetween(u, v);
+  float distance_tower = PVector.dist(u, v) / cube_width; // distance entre les deux tours en cube
+  
+  float muraille_length =  distance_tower - (t1.getNbCubeWidth() + t2.getNbCubeWidth())/2;
 
   pushMatrix();
-  translate(-dist + tour_width/2, 0, -dist);
-  for (int i = 0; i < 6; i++) {
-
-    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
- 
+  translate(t1.getPosition().x, t1.getPosition().y, t1.getPosition().z);
+  rotateY(angle);
+  translate(t1.getNbCubeWidth() * cube_width/2 , 0, -cube_width/2);
+  if (door) {
+    drawPorte(0, 0, muraille_length, 6);
+    drawWall(0, -6 * cube_height, muraille_length, p_h-6);
   }
-  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
+  else {
+    drawWall(0, 0, muraille_length, p_h);
+  }
+  drawCrenaux(0, -p_h * cube_height , muraille_length); //crenaux
   popMatrix();
   
-  pushMatrix();
-  translate(-dist + tour_width/2, 0, dist);
-   drawPorte(0, 0,largeur_muraille, nb_cube_height);
-   for (int i = 1; i < 6; i++) {
+} 
 
-    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
-    
- 
-  }
-  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
-  popMatrix();
-  
-  pushMatrix();
-  translate(-dist, 0, dist - tour_width/2);
-  rotateY(HALF_PI);
-    for (int i = 0; i < 6; i++) {
-
-    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
- 
-  }
-  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
-  popMatrix();
-
-  pushMatrix();
-  translate(dist, 0, dist - tour_width/2);
-  rotateY(HALF_PI);
- 
-    for (int i =0; i < 6; i++) {
-
-    drawWall(0, i * -2 * nb_cube_height, largeur_muraille, nb_cube_height);
- 
-  }
-  drawCrenaux(0, -5 * wall_height - cube_height * 2, largeur_muraille); //crenaux
-  popMatrix();
-  
-
-}
+void muraille(Tour t1, Tour t2, float p_h)
+{
+  muraille(t1,t2,p_h, false);  
+} 
