@@ -13,11 +13,11 @@ class Chateau {
   
 
   private void initialiserTours() {
-    t1 = new Tour(0, 0, 0, master_tour_width, wall_height, cube_height, nb_cube_width * 3, nb_cube_height,6);
-    t2 = new Tour(-dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
-    t3 = new Tour(-dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
-    t4 = new Tour(dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
-    t5 = new Tour(dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
+    t1 = new Tour(0, 0, 0, master_tour_width, wall_height, cube_height, nb_cube_width * 3, nb_cube_height,master_tour_etages);
+    t2 = new Tour(-dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
+    t3 = new Tour(-dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
+    t4 = new Tour(dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
+    t5 = new Tour(dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
   }
   
 
