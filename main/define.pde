@@ -10,7 +10,5 @@ float tour_width = cube_width * (1+nb_cube_width);
 float wall_width = nb_cube_width * cube_width;
 float wall_height = nb_cube_height * cube_height;  
 
-float hauteur_muraille = nb_cube_height*4;
-float largeur_muraille = (2*dist - tour_width)/cube_width;
-
-float master_tour_width = nb_cube_width* 3;
+float hauteur_muraille = 25;
+float master_tour_width = nb_cube_width * 3 * cube_width;

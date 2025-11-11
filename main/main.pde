@@ -10,6 +10,7 @@ void setup() {
   cam.position.y = 0;
   cam.position.z = 100; 
   chateau = new Chateau(0,0,0);
+  println(chateau.getTour(1).getNbCubeWidth());
 
   
 }

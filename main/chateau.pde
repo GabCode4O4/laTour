@@ -13,11 +13,11 @@ class Chateau {
   
 
   private void initialiserTours() {
-    t1 = new Tour(0, 0, 0, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height);
-    t2 = new Tour(-dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height);
-    t3 = new Tour(-dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height);
-    t4 = new Tour(dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height);
-    t5 = new Tour(dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height);
+    t1 = new Tour(0, 0, 0, master_tour_width, wall_height, cube_height, nb_cube_width * 3, nb_cube_height,6);
+    t2 = new Tour(-dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
+    t3 = new Tour(-dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
+    t4 = new Tour(dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
+    t5 = new Tour(dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,4);
   }
   
 
@@ -31,10 +31,10 @@ class Chateau {
     t4.draw();
     t5.draw();
     
-    muraille(t3, t2, 10);
-    muraille(t3, t4, 10, true);
-    muraille(t4, t5, 10);
-    muraille(t5, t2, 10);
+    muraille(t3, t2, hauteur_muraille);
+    muraille(t3, t4, hauteur_muraille, true);
+    muraille(t4, t5, hauteur_muraille);
+    muraille(t5, t2, hauteur_muraille);
     popMatrix();
   }
   

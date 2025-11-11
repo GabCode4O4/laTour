@@ -16,11 +16,11 @@ void muraille(Tour t1, Tour t2, float p_h, boolean door)
   rotateY(angle);
   translate(t1.getNbCubeWidth() * cube_width/2 , 0, -cube_width/2);
   if (door) {
-    drawPorte(0, 0, muraille_length, 6);
-    drawWall(0, -6 * cube_height, muraille_length, p_h-6);
+    drawPorte(0, 0, muraille_length, nb_cube_height);
+    drawWall(0, -wall_height, muraille_length, p_h-nb_cube_height);
   }
   else {
-    drawWall(0, 0, muraille_length, p_h);
+      drawWall(0, 0, muraille_length, p_h);
   }
   drawCrenaux(0, -p_h * cube_height , muraille_length); //crenaux
   popMatrix();
