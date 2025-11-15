@@ -9,6 +9,7 @@ void setup() {
   cam.position.x = 0;
   cam.position.y = 0;
   cam.position.z = 100; 
+  img = loadImage("./texture.jpg");
   chateau = new Chateau(0,0,0);
   println(chateau.getTour(1).getNbCubeWidth());
 
