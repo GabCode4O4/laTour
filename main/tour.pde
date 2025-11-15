@@ -47,7 +47,7 @@ class Tour {
       drawWall(-this.wall_width/2, -4 * this.wall_height, this.nb_cube_width, this.nb_cube_height); //mur
       drawMeurtriere(-this.wall_width/2, -5 * this.wall_height, this.nb_cube_width, this.nb_cube_height); // meurtriere
       drawWall(-this.wall_width/2, -6 * this.wall_height, this.nb_cube_width, this.nb_cube_height); //mur
-      drawCrenaux(-this.wall_width/2, -7 * this.wall_height, this.nb_cube_width); //crenaux
+      drawCrenauxTour(-this.wall_width/2, -7 * this.wall_height, this.nb_cube_width); //crenaux
       
       popMatrix();
     }

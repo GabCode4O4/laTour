@@ -22,6 +22,7 @@ class Chateau {
   
 
   void afficher() {
+
     pushMatrix();
     translate(x, y, z);
     
@@ -36,6 +37,8 @@ class Chateau {
     muraille(t4, t5, hauteur_muraille);
     muraille(t5, t2, hauteur_muraille);
     popMatrix();
+    drawSol();
+    
   }
   
   void setPosition(float x, float y, float z) {

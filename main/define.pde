@@ -16,4 +16,5 @@ float hauteur_muraille = 25;
 float master_tour_width = nb_cube_width * 3 * cube_width;
 int master_tour_etages = 6;
 
-PImage img;
+PImage cube_texture;
+PImage sol_texture;

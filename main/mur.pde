@@ -32,7 +32,7 @@ void drawWallRaw(float p_x, float p_y, float p_w, boolean half)
         } else {
             brick_width = cube_width;
         }
-        drawCube(dx, dy,0.f, brick_width, cube_height, cube_length);
+        drawCube(dx, dy,0.f, brick_width, cube_height, cube_length,cube_texture);
         dx+=brick_width;
     }
 

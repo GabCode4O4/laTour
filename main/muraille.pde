@@ -22,7 +22,10 @@ void muraille(Tour t1, Tour t2, float p_h, boolean door)
   else {
       drawWall(0, 0, muraille_length, p_h);
   }
-  drawCrenaux(0, -p_h * cube_height , muraille_length); //crenaux
+  drawCrenaux(0, -p_h * cube_height, muraille_length);
+
+
+
   popMatrix();
   
 } 
