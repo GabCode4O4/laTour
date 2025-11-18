@@ -1,6 +1,6 @@
 
 
-
+// Dessine une muraille entre deux tours 
 void muraille(Tour t1, Tour t2, float p_h, boolean door)
 {
   PVector u = new PVector(1.f, 0.f, 0.f); // vecteur orientation mur de base
