@@ -20,8 +20,10 @@ int tour_etages = 5;
 float hauteur_muraille = 25.f; // dimension en blocs
 
 
-// taille de l'ouverture de la porte 
-float door_hole = 4.f;
+// taille de l'ouverture de la porte (en blocs)
+float door_hole_width = 7.f;
+float door_hole_height = 15.f; 
+
 // taille de l'ouverture de la meurtrière
 float meurtriere_hole = 0.5f;
 
