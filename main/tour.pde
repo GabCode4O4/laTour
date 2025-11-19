@@ -41,7 +41,7 @@ class Tour {
       rotateY(theta); // Rotation de la face du mur en gros le premier rotate nous place du côté de la tour ou on veut mettre le mur et celui la fait en sorte que le mur soit bien orienté face à l'extérieur de la tour
       int j;
       for (j = 0; j < nb_etages; j++) {
-        if ((j+nb_etages) % 2 == 1) // pour pas que ça enchaine meurtrière et crenaux
+        if (j == 0 || (j+nb_etages) % 2 == 1) // pour pas que ça enchaine meurtrière et crenaux
           drawWall(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width, this.nb_cube_height); //porte
         else
           drawMeurtriere(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width, this.nb_cube_height); // meurtriere
