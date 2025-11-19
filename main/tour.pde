@@ -34,20 +34,19 @@ class Tour {
   translate(x, y, z); //on déplace toute la tour (son centre)
 
 
-  for (int i = 0; i < nb_etages; i++) {
+  for (int i = 0; i < 4; i++) {
       pushMatrix();
       rotateY(i * theta);  //Rotation de chaque face de la tour     
       translate(this.wall_width/2, 0, 0);  
       rotateY(theta); // Rotation de la face du mur en gros le premier rotate nous place du côté de la tour ou on veut mettre le mur et celui la fait en sorte que le mur soit bien orienté face à l'extérieur de la tour
-      
-      drawWall(-this.wall_width/2, 0, this.nb_cube_width, this.nb_cube_height); //porte
-      drawMeurtriere(-this.wall_width/2, -1 * this.wall_height, this.nb_cube_width, this.nb_cube_height); // meurtriere
-      drawWall(-this.wall_width/2, -2 * this.wall_height, this.nb_cube_width, this.nb_cube_height); //mur
-      drawMeurtriere(-this.wall_width/2, -3 * this.wall_height, this.nb_cube_width, this.nb_cube_height); // meurtriere
-      drawWall(-this.wall_width/2, -4 * this.wall_height, this.nb_cube_width, this.nb_cube_height); //mur
-      drawMeurtriere(-this.wall_width/2, -5 * this.wall_height, this.nb_cube_width, this.nb_cube_height); // meurtriere
-      drawWall(-this.wall_width/2, -6 * this.wall_height, this.nb_cube_width, this.nb_cube_height); //mur
-      drawCrenaux(-this.wall_width/2, -7 * this.wall_height, this.nb_cube_width); //crenaux
+      int j;
+      for (j = 0; j < nb_etages; j++) {
+        if ((j+nb_etages) % 2 == 1) // pour pas que ça enchaine meurtrière et crenaux
+          drawWall(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width, this.nb_cube_height); //porte
+        else
+          drawMeurtriere(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width, this.nb_cube_height); // meurtriere
+      }
+      drawCrenaux(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width); //crenaux
       
       popMatrix();
     }

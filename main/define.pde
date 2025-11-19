@@ -14,7 +14,7 @@ float wall_height = nb_cube_height * cube_height;
 
 // distance entre les 4 tours qui composent le chateau
 float dist = 50 * cube_width; // dimension en world space
-int tour_etages = 4;
+int tour_etages = 5;
 
 
 float hauteur_muraille = 25.f; // dimension en blocs
@@ -27,7 +27,7 @@ float meurtriere_hole = 0.5f;
 
 // attribut de la tour principale
 float master_tour_width = nb_cube_width * 3 * cube_width;
-int master_tour_etages = 6;
+int master_tour_etages = 7;
 
 // textures
 PImage cube_texture;
