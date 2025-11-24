@@ -1,5 +1,5 @@
 // Dessine une muraille entre deux tours 
-void muraille(Tour t1, Tour t2, float p_h, boolean door, float offset)
+void muraille(Tour t1, Tour t2, float p_h, boolean door, boolean has_crenaux, float offset)
 {
   PVector u = new PVector(1.f, 0.f, 0.f); // vecteur orientation mur de base
   PVector v = t2.getPosition().sub(t1.getPosition());  // vecteur entre les deux tours
@@ -19,17 +19,15 @@ void muraille(Tour t1, Tour t2, float p_h, boolean door, float offset)
    else {
     drawWall(0, 0, muraille_length, p_h);
   }
-  drawCrenaux(0, -p_h * cube_height, muraille_length);
+  if (has_crenaux)
+    drawCrenaux(0, -p_h * cube_height, muraille_length);
   popMatrix();
 } 
 
-void muraille(Tour t1, Tour t2, float p_h, boolean door){muraille(t1, t2, p_h, door, 0); } 
-void muraille(Tour t1, Tour t2, float p_h){muraille(t1, t2, p_h, false, 0);  } 
+void muraille(Tour t1, Tour t2, float p_h, boolean door){
+  muraille(t1, t2, p_h, door, true, -cube_width);
+  muraille(t1, t2, p_h, door,false,  0);
+  muraille(t1, t2, p_h, door, true, cube_width);
+} 
 
-
-void doubleMuraille(Tour t1, Tour t2, float p_h, float espacement, boolean door) {
-  muraille(t1, t2, p_h, door, espacement / 2);
-  muraille(t1, t2, p_h, door, -espacement / 2);
-}
-
-void doubleMuraille(Tour t1, Tour t2, float p_h, float espacement) {doubleMuraille(t1, t2, p_h, espacement, false);}
+void muraille(Tour t1, Tour t2, float p_h){ muraille(t1, t2, p_h, false);  } 
