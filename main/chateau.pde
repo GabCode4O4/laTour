@@ -33,7 +33,7 @@ class Chateau {
     t5.draw();
     
     muraille(t3, t2, hauteur_muraille);
-    muraille(t3, t4, hauteur_muraille, true);
+    muraille(t3, t4, hauteur_muraille, true); // une porte
     muraille(t4, t5, hauteur_muraille);
     muraille(t5, t2, hauteur_muraille);
     popMatrix();
