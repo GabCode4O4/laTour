@@ -34,6 +34,7 @@ int master_tour_etages = 7;
 // textures
 PImage cube_texture;
 PImage sol_texture;
+PImage toit_texture;
 
 // Pas important
 float theta1 = radians(90.0f);
