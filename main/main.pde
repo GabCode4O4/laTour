@@ -16,7 +16,7 @@ void setup() {
   cube_texture = loadImage("./img/mur.jpg");
   sol_texture = loadImage("./img/herbe.jpg");
   toit_texture = loadImage("./img/toit.jpg");
-  chateau = new Chateau(0,0,0);
+  chateau = new Chateau(0,0,0,dist_tour);
   chateauMusic.loop();
   
 }

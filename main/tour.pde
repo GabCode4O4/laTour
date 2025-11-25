@@ -52,41 +52,47 @@ class Tour {
     }
 
     pushMatrix();
-    float hTour = nb_etages * wall_height ;
+    float hTour = nb_etages * wall_height;  
     translate(0, -hTour, 0);
 
-    float mid   = wall_width / 2.0; 
-    float hToit = wall_height * 1.5;
+    float mid   = wall_width / 2.0; // moitié de la largeur du mur pour centrer le toit
+    float hToit = wall_height * 1.5; //hauteur du toit
 
     textureMode(NORMAL);
     beginShape(TRIANGLES);
     texture(toit_texture);
 
+    //sommet du toit
     float ax = 0;
     float ay = -hToit;
     float az = 0;
 
-    float x1 = -mid, z1 = -mid;  
-    float x2 =  mid, z2 = -mid;  
-    float x3 =  mid, z3 =  mid;  
-    float x4 = -mid, z4 =  mid;  
+    
+    float x1 = -mid, z1 = -mid; // coin gauche arrière 
+    float x2 =  mid, z2 = -mid; // coin droit arrière
+    float x3 =  mid, z3 =  mid; // coin droit avant
+    float x4 = -mid, z4 =  mid; // coin gauche avant
 
-    float ua = 0.5, va = 0.0; 
-    float ubL = 0.0, vb = 1.0; 
-    float ubR = 1.0, vbR = 1.0;
+    float ua = 0.5, va = 0.0; //coordonnées texture sommet du toit
+    float ubL = 0.0, vb = 1.0;//coordonnées texture base du toit gauche
+    float ubR = 1.0, vbR = 1.0;// coordonnées texture base du toit droit
 
+    //face arrière
     vertex(x1, 0, z1, ubL, vb);   
     vertex(x2, 0, z2, ubR, vbR);  
     vertex(ax, ay, az, ua, va);   
 
+    //face droite
     vertex(x2, 0, z2, ubL, vb);  
     vertex(x3, 0, z3, ubR, vbR);
     vertex(ax, ay, az, ua, va);
 
+    //face avant
     vertex(x3, 0, z3, ubL, vb);
     vertex(x4, 0, z4, ubR, vbR);
     vertex(ax, ay, az, ua, va);
 
+    //face gauche
     vertex(x4, 0, z4, ubL, vb);
     vertex(x1, 0, z1, ubR, vbR);
     vertex(ax, ay, az, ua, va);
@@ -108,5 +114,4 @@ class Tour {
   float getY() { return y; }
   float getZ() { return z; }
   
-
 }

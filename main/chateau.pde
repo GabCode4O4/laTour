@@ -1,17 +1,17 @@
 
 
 class Chateau {
-  private float x, y, z;
+  private float x, y, z, dist;
   private Tour t1, t2, t3, t4, t5;
   
-  Chateau(float x, float y, float z) {
+  Chateau(float x, float y, float z, float dist_tour) {
     this.x = x;
     this.y = y;
     this.z = z;
+    this.dist = dist_tour;
     initialiserTours();
   }
   
-
   private void initialiserTours() {
     t1 = new Tour(0, 0, 0, master_tour_width, wall_height, cube_height, nb_cube_width * 3, nb_cube_height,master_tour_etages);
     t2 = new Tour(-dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);

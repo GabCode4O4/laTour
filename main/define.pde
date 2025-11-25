@@ -13,7 +13,7 @@ float wall_width = nb_cube_width * cube_width;
 float wall_height = nb_cube_height * cube_height;  
 
 // distance entre les 4 tours qui composent le chateau
-float dist = 50 * cube_width; // dimension en world space
+float dist_tour = 50 * cube_width; // dimension en world space
 int tour_etages = 5;
 
 
