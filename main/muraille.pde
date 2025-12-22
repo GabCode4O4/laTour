@@ -3,7 +3,7 @@ void muraille(Tour t1, Tour t2, float p_h, boolean door, boolean has_crenaux, fl
 {
   PVector u = new PVector(1.f, 0.f, 0.f); // vecteur orientation mur de base
   PVector v = t2.getPosition().sub(t1.getPosition());  // vecteur entre les deux tours
-  float angle = PVector.angleBetween(u, v);
+  float angle = PVector.angleBetween(u, v); // angle entre les deux vecteurs
   float distance_tower = PVector.dist(u, v) / cube_width; // distance entre les deux tours en cube
   float muraille_length = distance_tower - (t1.getNbCubeWidth() + t2.getNbCubeWidth())/2;
 

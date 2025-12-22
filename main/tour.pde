@@ -1,8 +1,8 @@
 class Tour {
-  // Attributs de position
+/*Classe permettant de créer une tour paramètrable, hauteur largeur, toit.
+Dispose de meurtrière et de créneaux*/
+
   private float x, y, z;
-  
-  // Dimensions et paramètres
   private float wall_width;
   private float wall_height;
   private float cube_height;
@@ -10,10 +10,12 @@ class Tour {
   private int nb_cube_height;
   private float theta;
   private int nb_etages;
+  private boolean isToit;
+  private BoolInt isPorte;
   
-  // Constructeur
+  // Constructeur principal
   Tour(float x, float y, float z, float wall_width_t, float wall_height, 
-       float cube_height, int nb_cube_width, int nb_cube_height,int nb_etages) {
+       float cube_height, int nb_cube_width, int nb_cube_height,int nb_etages, boolean isToit, BoolInt isPorte) {
     this.x = x;
     this.y = y;
     this.z = z;
@@ -24,6 +26,20 @@ class Tour {
     this.nb_cube_height = nb_cube_height;
     this.theta = theta1;
     this.nb_etages = nb_etages;
+    this.isToit = isToit;
+    this.isPorte = isPorte;
+  }
+
+  // Surcharge avec choix du toit pas de porte par défaut false
+  Tour(float x, float y, float z, float wall_width_t, float wall_height, 
+       float cube_height, int nb_cube_width, int nb_cube_height,int nb_etages, boolean isToit) {
+     this(x, y, z, wall_width_t, wall_height, cube_height, nb_cube_width, nb_cube_height, nb_etages, isToit, new BoolInt(false, 0));
+  }
+
+  //Surcharge sans toit ni porte
+  Tour(float x, float y, float z, float wall_width_t, float wall_height, 
+       float cube_height, int nb_cube_width, int nb_cube_height,int nb_etages) {
+     this(x, y, z, wall_width_t, wall_height, cube_height, nb_cube_width, nb_cube_height, nb_etages, false, new BoolInt(false, 0));
   }
   
   float getNbCubeWidth() { return this.nb_cube_width;}
@@ -42,20 +58,31 @@ class Tour {
 
       int j;
       for (j = 0; j < nb_etages; j++) {
-        if (j == 0 || (j+nb_etages) % 2 == 1)
-          drawWall(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width, this.nb_cube_height);
+        //si la tour a une porte
+        if (isPorte.b && i == isPorte.val && j == 0) {
+             float doorH = 6;
+             float doorW = 2; 
+             drawPorte(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width+1, doorH, doorW, true);
+             //le dessus de la porte pour combler l'étage si on fait une porte plus petite que la hauteur de l'étage
+             if (doorH < this.nb_cube_height) drawWall(-this.wall_width/2, -j * this.wall_height - doorH * cube_height, this.nb_cube_width+1, this.nb_cube_height - doorH);
+        }
+        else if (j == 0 || (j+nb_etages) % 2 == 1)
+          drawWall(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width+1, this.nb_cube_height);
         else
-          drawMeurtriere(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width, this.nb_cube_height);
+          drawMeurtriere(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width+1, this.nb_cube_height);
       }
       drawCrenaux(-this.wall_width/2, -j * this.wall_height, this.nb_cube_width);
       popMatrix();
     }
 
-    pushMatrix();
-    float hTour = nb_etages * wall_height;  
-    translate(0, -hTour, 0);
 
+    float hTour = nb_etages * wall_height;  
+    
     float mid   = wall_width / 2.0; // moitié de la largeur du mur pour centrer le toit
+
+    if (isToit){
+      pushMatrix();
+    translate(0, -hTour, 0);
     float hToit = wall_height * 1.5; //hauteur du toit
 
     textureMode(NORMAL);
@@ -67,7 +94,6 @@ class Tour {
     float ay = -hToit;
     float az = 0;
 
-    
     float x1 = -mid, z1 = -mid; // coin gauche arrière 
     float x2 =  mid, z2 = -mid; // coin droit arrière
     float x3 =  mid, z3 =  mid; // coin droit avant
@@ -99,8 +125,25 @@ class Tour {
 
     endShape();
     popMatrix();
+// si pas de toit trianfulaire on fait une marche de gardes plate
+  }else {
+      pushMatrix();
+      translate(0, -hTour + cube_height, 0); //on se place pas tout à fait au sommet histoire que les garades ne tombent pas de la tour
+      textureMode(NORMAL);
+      beginShape(QUADS);
+      
+      texture(cube_texture); 
+  //création d'un toit plat
+      vertex(-mid, 0, -mid, 0, 0); 
+      vertex( mid, 0, -mid, 1, 0); 
+      vertex( mid, 0,  mid, 1, 1); 
+      vertex(-mid, 0,  mid, 0, 1); 
 
-    popMatrix();
+      endShape();
+      popMatrix();
+    }
+
+    popMatrix(); //pop du pushMatrix global de la tour
   }
 
   

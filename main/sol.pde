@@ -1,5 +1,5 @@
 void drawSol() {
-  
+  //Dessine le sol texturé c'est un cube plat 
   pushMatrix();
 
   float solSize = sol_texture.width;

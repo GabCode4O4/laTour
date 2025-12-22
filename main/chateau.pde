@@ -1,6 +1,10 @@
 
 
 class Chateau {
+/*Classe permettant de créer le chateaux avec tours et murailles
+Le chateau dispose de 5 tours dont une centrale qui est la tour du roi, ainsi que de murailles dont une qui a une porte.
+L'enceinte du chateau est paramètrable en choisissant la distance entre les tours*/
+
   private float x, y, z, dist;
   private Tour t1, t2, t3, t4, t5;
   
@@ -13,7 +17,7 @@ class Chateau {
   }
   
   private void initialiserTours() {
-    t1 = new Tour(0, 0, 0, master_tour_width, wall_height, cube_height, nb_cube_width * 3, nb_cube_height,master_tour_etages);
+    t1 = new Tour(0, 0, 0, master_tour_width, wall_height, cube_height, master_tour_nb_cubes, nb_cube_height,master_tour_etages,true,master_porte);
     t2 = new Tour(-dist, 0, -dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
     t3 = new Tour(-dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
     t4 = new Tour(dist, 0, dist, wall_width, wall_height, cube_height, nb_cube_width, nb_cube_height,tour_etages);
@@ -33,7 +37,7 @@ class Chateau {
     t5.draw();
     
     muraille(t3, t2, hauteur_muraille);
-    muraille(t3, t4, hauteur_muraille, true); // une porte
+    muraille(t3, t4, hauteur_muraille, true); // muraille avec porte
     muraille(t4, t5, hauteur_muraille);
     muraille(t5, t2, hauteur_muraille);
     popMatrix();

@@ -11,6 +11,7 @@ void drawCube(float x, float y, float z, float w, float h, float l,PImage img) {
   texture(img);
 
 // 1 groupe de vertex par face
+//L'utilisation des vertex est pour nous permettre d'appliquer des textures
   vertex(-w/2, -h/2,  l/2, 0, 0);
   vertex( w/2, -h/2,  l/2, 1, 0);
   vertex( w/2,  h/2,  l/2, 1, 1);
